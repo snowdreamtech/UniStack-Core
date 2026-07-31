@@ -71,10 +71,19 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 	buf := make([]byte, maxCapacity)
 	scanner.Buffer(buf, maxCapacity)
 
+func parseRepologySQLStream(decoder io.Reader) (map[string]*PackageMapping, error) {
 	mappings := make(map[string]*PackageMapping)
 	inPackagesTable := false
 
 	log.Println("Scanning decompressed stream...")
+
+	// Dynamic column indices for packages table
+	var repoIdx, projectIdx, visiblenameIdx = -1, -1, -1
+	
+	scanner := bufio.NewScanner(decoder)
+	// Increase scanner buffer size to handle potentially very long lines (e.g. 10MB)
+	buf := make([]byte, 0, 10*1024*1024)
+	scanner.Buffer(buf, 10*1024*1024)
 
 	var linesProcessed int64
 	for scanner.Scan() {
@@ -82,28 +91,32 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 		if linesProcessed%10000000 == 0 {
 			log.Printf("Processed %d lines...", linesProcessed)
 		}
-
+		
 		line := scanner.Text()
 
 		if inPackagesTable {
 			if line == "\\." {
 				inPackagesTable = false
-				log.Printf("Finished reading packages table (total projects mapped: %d).", len(mappings))
-				break // We only need the packages table
+				log.Printf("Finished reading packages table (total projects mapped: %d).\n", len(mappings))
+				break
 			}
 
-			// Parse the TSV data for packages table
+			// Format: TSV
 			cols := strings.Split(line, "\t")
-			if len(cols) < 4 {
+
+			// Ensure we have enough columns based on our dynamic indices
+			maxIdx := repoIdx
+			if projectIdx > maxIdx { maxIdx = projectIdx }
+			if visiblenameIdx > maxIdx { maxIdx = visiblenameIdx }
+			
+			if len(cols) <= maxIdx {
 				continue
 			}
 
-			repo := cols[0]
-			// subrepo := cols[1]
-			project := cols[2]
-			visiblename := cols[3]
+			repo := cols[repoIdx]
+			project := cols[projectIdx]
+			visiblename := cols[visiblenameIdx]
 
-			// Only process if it's one of the target OS families
 			isDebian := strings.HasPrefix(repo, "debian_")
 			isAlpine := strings.HasPrefix(repo, "alpine_")
 			isRhel := strings.HasPrefix(repo, "epel_") || strings.HasPrefix(repo, "centos_") || strings.HasPrefix(repo, "rocky_") || strings.HasPrefix(repo, "rhel_") || strings.HasPrefix(repo, "fedora_")
@@ -111,11 +124,12 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			if isDebian || isAlpine || isRhel {
 				mapping, exists := mappings[project]
 				if !exists {
-					mapping = &PackageMapping{Project: project}
+					mapping = &PackageMapping{
+						Project: project,
+					}
 					mappings[project] = mapping
 				}
 
-				// Map to specific OS fields
 				if isDebian && mapping.DebianPkg == "" {
 					mapping.DebianPkg = visiblename
 				}
@@ -128,11 +142,40 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			}
 		} else {
 			// Check if we reached the packages COPY statement
-			// The exact statement might be "COPY repology.packages", "COPY public.packages (" or "COPY packages ("
-			if strings.HasPrefix(line, "COPY packages ") || strings.HasPrefix(line, "COPY public.packages ") || strings.HasPrefix(line, "COPY repology.packages ") {
-				log.Println("Found packages table. Starting extraction...")
-				inPackagesTable = true
+			if strings.HasPrefix(line, "COPY packages ") || 
+		   strings.HasPrefix(line, "COPY public.packages ") || 
+		   strings.HasPrefix(line, "COPY repology.packages ") || 
+		   strings.HasPrefix(line, "COPY \"packages\" ") || 
+		   strings.HasPrefix(line, "COPY public.\"packages\" ") || 
+		   strings.HasPrefix(line, "COPY repology.\"packages\" ") ||
+		   strings.HasPrefix(line, "COPY packages(") ||
+		   strings.HasPrefix(line, "COPY public.packages(") ||
+		   strings.HasPrefix(line, "COPY repology.packages(") {
+			inPackagesTable = true
+			
+			// Parse the column names from the COPY header to adapt to schema changes
+			start := strings.Index(line, "(")
+			end := strings.Index(line, ")")
+			if start != -1 && end != -1 {
+				headerStr := line[start+1 : end]
+				headers := strings.Split(headerStr, ",")
+				for i, h := range headers {
+					h = strings.TrimSpace(h)
+					// Remove any quotes
+					h = strings.ReplaceAll(h, "\"", "")
+					if h == "repo" { repoIdx = i }
+					if h == "project" || h == "effname" { projectIdx = i }
+					if h == "visiblename" { visiblenameIdx = i }
+				}
 			}
+			
+			// Fallbacks in case columns weren't explicitly listed in the COPY statement
+			if repoIdx == -1 { repoIdx = 1 } 
+			if projectIdx == -1 { projectIdx = 27 } // effname is 27 in newer schema, project was 2 in old schema
+			if visiblenameIdx == -1 { visiblenameIdx = 9 }
+			
+			log.Printf("Found packages table. Extraction initialized with cols: repo=%d, project=%d, visiblename=%d\n", repoIdx, projectIdx, visiblenameIdx)
+		}
 		}
 	}
 

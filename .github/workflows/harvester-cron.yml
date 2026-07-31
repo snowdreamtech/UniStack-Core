@@ -124,4 +124,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr merge ${{ needs.harvest-and-pr.outputs.pr_number }} --auto --squash --repo ${{ github.repository }}
+          gh pr merge ${{ needs.harvest-and-pr.outputs.pr_number }} --auto --squash --delete-branch --repo ${{ github.repository }}
