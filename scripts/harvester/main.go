@@ -28,7 +28,8 @@ type OSData struct {
 func main() {
 	log.Println("=== UniStack Harvester Started ===")
 	
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Minute)
+	// Set a very generous timeout of 300 minutes (5 hours) for massive generations
+	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Minute)
 	defer cancel()
 
 	// 1. Fetch Repology Packages mapping
