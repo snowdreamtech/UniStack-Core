@@ -128,8 +128,8 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			}
 		} else {
 			// Check if we reached the packages COPY statement
-			// The exact statement might be "COPY public.packages (" or "COPY packages ("
-			if strings.HasPrefix(line, "COPY packages ") || strings.HasPrefix(line, "COPY public.packages ") {
+			// The exact statement might be "COPY repology.packages", "COPY public.packages (" or "COPY packages ("
+			if strings.HasPrefix(line, "COPY packages ") || strings.HasPrefix(line, "COPY public.packages ") || strings.HasPrefix(line, "COPY repology.packages ") {
 				log.Println("Found packages table. Starting extraction...")
 				inPackagesTable = true
 			}
