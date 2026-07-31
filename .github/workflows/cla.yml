@@ -1,0 +1,23 @@
+name: "CLA Assistant"
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened, closed, synchronize]
+
+jobs:
+  CLAAssistant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "CLA Assistant"
+        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
+        uses: contributor-assistant/github-action@ca4a40a7d1004f18d9960b404b97e5f30a505a08 # v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.WORKFLOW_SECRET }}
+        with:
+          path-to-signatures: 'signatures/version1/cla.json'
+          path-to-document: 'https://github.com/snowdreamtech/UniStack-Community/blob/main/CLA.md'
+          branch: 'main'
+          allowlist: 'dependabot[bot],dependabot-preview[bot],github-actions[bot],*bot*'
+          custom-notsigned-prcomment: 'Thank you for your submission! It seems you have not yet signed our Contributor License Agreement (CLA).<br/>**To sign it, please reply to this PR by leaving a comment with exactly the following text:**<br/><br/>`I have read the CLA Document and I hereby sign the CLA`'

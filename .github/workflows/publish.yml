@@ -1,0 +1,52 @@
+name: Publish to Registry
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup UniStack
+        uses: snowdreamtech/setup-unistack@e1acc8a705f9de654ee3619918b561f861141371 # v1
+        with:
+          unistack-version: '0.0.6'
+
+      - name: Build Packages and Generate Index
+        run: |
+          # Use UniStack's built-in registry packaging and indexing engine
+          unistack registry pack packages dist
+
+      - name: Deploy to Remote Server via native rsync
+        env:
+          # SSH private key for authenticating with the remote registry server
+          SSH_PRIVATE_KEY: ${{ secrets.UNISTACK_REGISTRY_SSH_PRIVATE_KEY }}
+          # IP address or domain name of the remote registry server
+          REMOTE_HOST: ${{ secrets.UNISTACK_REGISTRY_HOST }}
+          # SSH login username for the remote registry server
+          REMOTE_USER: ${{ secrets.UNISTACK_REGISTRY_USER }}
+          # Target deployment path on the remote CDN or static storage server
+          REMOTE_TARGET_PATH: ${{ secrets.UNISTACK_REGISTRY_TARGET_PATH }}
+        run: |
+          # 1. Start ssh-agent and load the private key
+          mkdir -p ~/.ssh
+          eval $(ssh-agent -s)
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+          
+          # 2. Bypass SSH host key verification on first connection (StrictHostKeyChecking)
+          cat >> ~/.ssh/config <<EOF
+          Host *
+            StrictHostKeyChecking no
+          EOF
+          
+          # 3. Use native rsync for incremental push (flag -c enables checksum comparison)
+          rsync -rlgoDzvc -e "ssh -o StrictHostKeyChecking=no" dist/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET_PATH}

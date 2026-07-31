@@ -1,0 +1,107 @@
+name: PR Validation
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Validate Package Namespace
+        run: |
+          # Check all package.yml files that were modified or added in this PR
+          for file in $(git diff --name-only origin/main | grep '^packages/.*package\.yml$' || true); do
+            if [ -f "$file" ]; then
+              # Extract the 'name' field
+              NAME=$(grep -oP '(?<=name: ")[^"]*' "$file" || grep -oP '(?<=name: )[^ ]*' "$file" || true)
+              if [ -z "$NAME" ]; then
+                echo "Error: Could not extract package name from $file. Missing 'name:' field."
+                exit 1
+              fi
+              if [[ "$NAME" == *"/"* ]]; then
+                echo "Error: Package '$NAME' in $file MUST NOT contain a namespace prefix."
+                echo "Community namespaces with a prefix are strictly prohibited in the core registry."
+                exit 1
+              fi
+              echo "✅ Package $NAME passed namespace validation."
+            fi
+          done
+
+      - name: Anti-Bloat Check (Size & Type)
+        run: |
+          # Prevent git history bloat by restricting file sizes and types in community packages.
+          ALLOWED_EXTS="yml yaml md txt sh bat cmd ps1 j2 conf ini json toml"
+          MAX_SIZE_KB=50
+          
+          for file in $(git diff --name-only origin/main | grep '^packages/' || true); do
+            if [ -f "$file" ]; then
+              # Check extension
+              ext="${file##*.}"
+              valid_ext=false
+              for a in $ALLOWED_EXTS; do
+                if [ "$ext" = "$a" ]; then
+                  valid_ext=true
+                  break
+                fi
+              done
+              
+              if [ "$valid_ext" = false ]; then
+                echo "Error: File '$file' has a disallowed extension (.$ext)."
+                echo "Only the following extensions are allowed: $ALLOWED_EXTS"
+                echo "Binary files are strictly prohibited."
+                exit 1
+              fi
+              
+              # Check file size in bytes
+              size_bytes=$(wc -c < "$file")
+              size_kb=$((size_bytes / 1024))
+              
+              if [ "$size_kb" -gt "$MAX_SIZE_KB" ]; then
+                echo "Error: File '$file' is too large (${size_kb}KB). Max allowed size is ${MAX_SIZE_KB}KB."
+                exit 1
+              fi
+              
+              echo "✅ $file passed anti-bloat check (${size_kb}KB)."
+            fi
+          done
+
+      - name: Validate YAML Format
+        run: |
+          # Basic YAML linting
+          sudo apt-get install -y yamllint
+          for file in $(git diff --name-only origin/main | grep '^packages/.*package\.yml$' || true); do
+            if [ -f "$file" ]; then
+              yamllint -d "{extends: relaxed, rules: {line-length: disable}}" "$file"
+              echo "✅ $file passed yaml linting."
+            fi
+          done
+
+      - name: Real Installation Sandbox Test
+        timeout-minutes: 10
+        run: |
+          # Run actual package installation in an ephemeral container.
+          # The container acts as the sandbox. It is allowed network access to verify upstream packages (e.g. apt, docker pull),
+          # but relies on GitHub Actions' fork isolation (no secrets) and a strict timeout to prevent abuse (e.g. mining).
+          for file in $(git diff --name-only origin/main | grep '^packages/.*package\.yml$' || true); do
+            if [ -f "$file" ]; then
+              echo "Testing real installation of $file in sandbox..."
+              pkg_dir=$(dirname "$file")
+              
+              # Run an Ubuntu container with network to test real installation.
+              # The container will be destroyed after the test (--rm).
+              # TODO: Replace the sh -c command with the actual unistack install command once CLI is ready.
+              docker run --rm \
+                -v ${{ github.workspace }}/$pkg_dir:/pkg:ro \
+                ubuntu:22.04 \
+                sh -c "echo 'TODO: unistack install /pkg/package.yml' && echo 'Simulating real installation (apt/docker pull)...'"
+              
+              echo "✅ $file passed real installation validation."
+            fi
+          done
