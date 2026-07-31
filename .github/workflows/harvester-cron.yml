@@ -37,7 +37,7 @@ jobs:
       - name: Create Pull Request
         id: cpr
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WORKFLOW_SECRET || secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -122,6 +122,6 @@ jobs:
     steps:
       - name: Enable Auto-Merge
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WORKFLOW_SECRET || secrets.GITHUB_TOKEN }}
         run: |
           gh pr merge ${{ needs.harvest-and-pr.outputs.pr_number }} --auto --squash --delete-branch --repo ${{ github.repository }}
