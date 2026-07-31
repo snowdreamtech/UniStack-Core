@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "java:jide-oss"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for java:jide-oss"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/java:jide-oss"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libjide-oss-java"
+    rhel: ""
+    alpine: ""

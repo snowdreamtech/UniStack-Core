@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "rust:wezterm-bidi"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for rust:wezterm-bidi"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/rust:wezterm-bidi"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "rust-wezterm-bidi"
+    rhel: "rust-wezterm-bidi"
+    alpine: ""

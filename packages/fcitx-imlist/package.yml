@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "fcitx-imlist"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for fcitx-imlist"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/fcitx-imlist"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "fcitx-imlist"
+    rhel: ""
+    alpine: ""

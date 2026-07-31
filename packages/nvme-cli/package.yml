@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "nvme-cli"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for nvme-cli"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/nvme-cli"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "nvme-cli"
+    rhel: "nvme-cli"
+    alpine: "nvme-cli-bash-completion"
+  services:
+    debian: "nvmefc-boot-connections"
+    rhel: ""
+    alpine: ""

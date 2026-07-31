@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "obs-time-source"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for obs-time-source"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/obs-time-source"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "obs-time-source"
+    rhel: ""
+    alpine: ""

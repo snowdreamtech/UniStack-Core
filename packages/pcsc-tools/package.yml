@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "pcsc-tools"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for pcsc-tools"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/pcsc-tools"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "pcsc-tools"
+    rhel: "pcsc-tools"
+    alpine: "pcsc-tools"

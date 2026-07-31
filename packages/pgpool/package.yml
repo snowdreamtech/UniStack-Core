@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "pgpool"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for pgpool"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/pgpool"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "pgpool2"
+    rhel: "postgresql-pgpool-II"
+    alpine: "pgpool"
+  services:
+    debian: "pgpool2"
+    rhel: ""
+    alpine: ""

@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "dokuwiki-plugin-sortablejs"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for dokuwiki-plugin-sortablejs"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/dokuwiki-plugin-sortablejs"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "dokuwiki-plugin-sortablejs"
+    rhel: ""
+    alpine: ""

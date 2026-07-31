@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "ansible-collection-pulp-pulp-installer"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for ansible-collection-pulp-pulp-installer"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/ansible-collection-pulp-pulp-installer"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: ""
+    rhel: "ansible-collection-pulp-pulp_installer"
+    alpine: ""

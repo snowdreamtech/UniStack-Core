@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:config-ini-reader-ordered"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:config-ini-reader-ordered"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:config-ini-reader-ordered"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libconfig-ini-reader-ordered-perl"
+    rhel: "perl-Config-INI-Reader-Ordered"
+    alpine: "perl-config-ini-reader-ordered"

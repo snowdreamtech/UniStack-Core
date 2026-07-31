@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "freeswitch-sounds-en-us-callie-8000"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for freeswitch-sounds-en-us-callie-8000"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/freeswitch-sounds-en-us-callie-8000"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: ""
+    rhel: ""
+    alpine: "freeswitch-sounds-en-us-callie-8000"

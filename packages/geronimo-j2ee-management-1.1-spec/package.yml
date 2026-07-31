@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "geronimo-j2ee-management-1.1-spec"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for geronimo-j2ee-management-1.1-spec"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/geronimo-j2ee-management-1.1-spec"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "geronimo-j2ee-management-1.1-spec"
+    rhel: ""
+    alpine: ""

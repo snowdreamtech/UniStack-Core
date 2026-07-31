@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:lingua-pt-stemmer"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:lingua-pt-stemmer"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:lingua-pt-stemmer"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "liblingua-pt-stemmer-perl"
+    rhel: "perl-Lingua-PT-Stemmer"
+    alpine: "perl-lingua-pt-stemmer"

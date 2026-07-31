@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "pk4"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for pk4"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/pk4"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "pk4"
+    rhel: ""
+    alpine: ""
+  services:
+    debian: "pk4-generate-index"
+    rhel: ""
+    alpine: ""

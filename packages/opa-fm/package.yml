@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "opa-fm"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for opa-fm"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/opa-fm"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "opa-fm"
+    rhel: "opa-fm"
+    alpine: ""
+  services:
+    debian: "opa-fm"
+    rhel: ""
+    alpine: ""

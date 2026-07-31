@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:xs-parse-keyword"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:xs-parse-keyword"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:xs-parse-keyword"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libxs-parse-keyword-perl"
+    rhel: "perl-XS-Parse-Keyword"
+    alpine: "perl-xs-parse-keyword"

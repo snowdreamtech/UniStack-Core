@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "mdnsd"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for mdnsd"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/mdnsd"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "mdnsd"
+    rhel: ""
+    alpine: "mdnsd"
+  services:
+    debian: "mdnsd"
+    rhel: ""
+    alpine: ""
