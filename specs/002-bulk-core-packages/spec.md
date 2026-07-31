@@ -12,7 +12,7 @@
 
 ### User Story 1 - Machine Extraction of Mappings and Base Generation (Priority: P1)
 
-The automation tool (Harvester) can periodically download data from Repology.org, combine it with the service mapping dictionary, and automatically generate standard `package.yml` file structures for various open-source software using Go's template engine.
+The automation tool (Harvester) can periodically download the daily database dump (`.sql.zst`) from Repology.org, parse the raw SQL directly via a custom Go implementation without requiring a PostgreSQL instance, combine it with the service mapping dictionary, and automatically generate standard `package.yml` file structures for various open-source software using Go's template engine.
 
 **Why this priority**: This is the fundamental infrastructure of the entire batch package generation pipeline; without it, "mass production" is impossible.
 
@@ -63,6 +63,7 @@ The entire process achieves a low-barrier automation: Harvester executes periodi
 - **FR-003**: System MUST utilize `gopkg.in/yaml.v3` (or similar AST-level parsers) to accomplish idempotent updates of package information, prohibiting brute-force text-level overwrites.
 - **FR-004**: System MUST create package directories directly in `packages/<pkg_name>/` without adding an organizational namespace.
 - **FR-005**: Script logic MUST NOT replace `UniStack Core` decisions on `systemd/init` selection; it is only responsible for extracting and injecting service names.
+- **FR-006**: System MUST obtain Repology data by downloading the bulk `.sql.zst` dump and parsing it in-memory via Go, completely avoiding the Repology REST API and any external PostgreSQL database engine.
 
 ### Key Entities
 

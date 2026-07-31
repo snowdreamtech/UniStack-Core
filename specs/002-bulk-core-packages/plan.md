@@ -8,7 +8,7 @@ Based on your in-depth analysis and feedback, we will build a fully UniStack-com
 All `package.yml` files and directory structures produced by the auto-generation engine MUST 100% comply with existing UniStack specifications. The underlying logic is entirely judged intelligently by **UniStack** (Installer); the generation script does not interfere with the underlying installation mechanisms.
 
 ### 2. Machine Extraction: Repology Package Mapping Data
-Periodically download/request open-source aggregated data from Repology.org to extract **pure package name mappings** across heterogeneous operating systems.
+To avoid API rate limits, the Harvester will download the daily PostgreSQL database dump (`repology-database-dump-latest.sql.zst`) from Repology.org. Instead of spinning up a heavyweight PostgreSQL instance, we will implement a custom Go parser (Scheme B) to extract the necessary table data directly from the uncompressed raw SQL stream via regex/string matching. This ensures maximum performance and zero external database dependencies.
 
 ### 3. Data Complement: Service Data Dictionary and Service Name Discovery
 **Addressing service data extraction coverage (Debian, RHEL, Alpine, etc.):**
