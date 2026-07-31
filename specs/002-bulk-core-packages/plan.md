@@ -9,6 +9,7 @@ All `package.yml` files and directory structures produced by the auto-generation
 
 ### 2. Machine Extraction: Repology Package Mapping Data
 To avoid API rate limits, the Harvester will download the daily PostgreSQL database dump (`repology-database-dump-latest.sql.zst`) from Repology.org. Instead of spinning up a heavyweight PostgreSQL instance, we will implement a custom Go parser (Scheme B) to extract the necessary table data directly from the uncompressed raw SQL stream via regex/string matching. This ensures maximum performance and zero external database dependencies.
+* **Network Resilience & Graceful Fallback**: In strict adherence to global network operation rules, the download mechanism MUST implement robust retries (exponential backoff) and data integrity validation. If network fluctuations prevent a successful download, the pipeline will gracefully abort the current sync cycle to prevent corrupting existing data.
 
 ### 3. Data Complement: Service Data Dictionary and Service Name Discovery
 **Addressing service data extraction coverage (Debian, RHEL, Alpine, etc.):**

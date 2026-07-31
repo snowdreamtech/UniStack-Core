@@ -32,7 +32,7 @@ description: "Task list for Bulk Build UniStack Core Packages"
 
 **Purpose**: Build the fetchers for external mapping data and bootstrap the service dictionary.
 
-- [ ] T005 [P] Implement `fetcher_repology.go` to download the `repology-database-dump-latest.sql.zst` dump, decompress it using Go's `zstd`, and parse the raw SQL text directly to extract package mappings (without using a DB instance)
+- [ ] T005 [P] Implement `fetcher_repology.go` to download the `repology-database-dump-latest.sql.zst` dump with robust retry mechanisms, decompress it using Go's `zstd`, and parse the raw SQL text directly to extract package mappings (without using a DB instance)
 - [ ] T006 [P] Implement `fetcher_services.go` to scan Debian/RHEL/Alpine repository data for `.service` or `init.d` filenames
 - [ ] T007 Combine fetchers to output the initial `services_dict.yml` (saving it to `scripts/harvester/`)
 

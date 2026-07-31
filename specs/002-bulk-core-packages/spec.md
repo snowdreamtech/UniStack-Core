@@ -64,6 +64,7 @@ The entire process achieves a low-barrier automation: Harvester executes periodi
 - **FR-004**: System MUST create package directories directly in `packages/<pkg_name>/` without adding an organizational namespace.
 - **FR-005**: Script logic MUST NOT replace `UniStack Core` decisions on `systemd/init` selection; it is only responsible for extracting and injecting service names.
 - **FR-006**: System MUST obtain Repology data by downloading the bulk `.sql.zst` dump and parsing it in-memory via Go, completely avoiding the Repology REST API and any external PostgreSQL database engine.
+- **FR-007**: System MUST implement robust network resilience for all external data fetching, including automatic retries with exponential backoff and stream integrity verification, to gracefully abort and prevent crashes during network fluctuations.
 
 ### Key Entities
 
