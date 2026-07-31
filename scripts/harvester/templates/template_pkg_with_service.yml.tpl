@@ -6,7 +6,7 @@ metadata:
   name: "{{.Name}}"
   version: "{{.Version}}"
   description: "Auto-generated UniStack core package for {{.Name}}"
-  authors: ["snowdreamtech@qq.com"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/{{.Name}}"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
