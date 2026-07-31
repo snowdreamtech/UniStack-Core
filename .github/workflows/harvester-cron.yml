@@ -36,20 +36,42 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          commit-message: 'chore(harvester): auto-update core packages from Repology'
-          title: 'chore(harvester): Auto-update UniStack Core Packages'
-          body: |
-            Automated PR to update UniStack core packages mapped from the latest Repology daily database dump.
-            
-            **Harvester Action**: 
-            - Extracted `packages` table from Repology.
-            - Mapped matching projects across Debian, RHEL, and Alpine.
-            - AST-merged output into `packages/*/package.yml`.
-          branch: harvester-auto-update
-          delete-branch: true
-          base: main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes detected. Skipping PR creation."
+            echo "pull-request-number=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          git checkout -b harvester-auto-update
+          git add .
+          git commit -m "chore(harvester): auto-update core packages from Repology"
+          git push --force origin harvester-auto-update
+          
+          PR_EXISTS=$(gh pr list --head harvester-auto-update --json number --jq 'length')
+          if [ "$PR_EXISTS" -eq "0" ]; then
+            PR_URL=$(gh pr create \
+              --title "chore(harvester): Auto-update UniStack Core Packages" \
+              --body "Automated PR to update UniStack core packages mapped from the latest Repology daily database dump.
+
+          **Harvester Action**: 
+          - Extracted \`packages\` table from Repology.
+          - Mapped matching projects across Debian, RHEL, and Alpine.
+          - AST-merged output into \`packages/*/package.yml\`." \
+              --head harvester-auto-update \
+              --base main)
+            PR_NUMBER=$(echo "$PR_URL" | awk -F'/' '{print $NF}')
+          else
+            PR_NUMBER=$(gh pr list --head harvester-auto-update --json number --jq '.[0].number')
+          fi
+          
+          echo "pull-request-number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pull-request-branch-name=harvester-auto-update" >> $GITHUB_OUTPUT
 
   validate-pr:
     name: Validate Packages (CI)
