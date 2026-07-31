@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "webrtc-audio-processing"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for webrtc-audio-processing"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/webrtc-audio-processing"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "webrtc-audio-processing"
+    rhel: "webrtc-audio-processing"
+    alpine: "webrtc-audio-processing-1-dev"

@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "networkmanager-fortisslvpn"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for networkmanager-fortisslvpn"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/networkmanager-fortisslvpn"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "network-manager-fortisslvpn"
+    rhel: "NetworkManager-fortisslvpn"
+    alpine: ""

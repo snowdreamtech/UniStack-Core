@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "lua:lpeg-patterns"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for lua:lpeg-patterns"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/lua:lpeg-patterns"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "lua-lpeg-patterns"
+    rhel: "lua-lpeg-patterns"
+    alpine: "lua-lpeg_patterns"

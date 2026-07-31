@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "go:gitlab-golang-commonmark-puny"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for go:gitlab-golang-commonmark-puny"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/go:gitlab-golang-commonmark-puny"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "golang-gitlab-golang-commonmark-puny"
+    rhel: ""
+    alpine: ""

@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:dbix-class-cursor-cached"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:dbix-class-cursor-cached"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:dbix-class-cursor-cached"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libdbix-class-cursor-cached-perl"
+    rhel: "perl-DBIx-Class-Cursor-Cached"
+    alpine: "perl-dbix-class-cursor-cached"

@@ -1,0 +1,35 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "knot-resolver"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for knot-resolver"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/knot-resolver"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "knot-resolver"
+    rhel: "knot-resolver"
+    alpine: "knot-resolver-dev"
+  services:
+    debian: "kres-cache-gc"
+    rhel: ""
+    alpine: ""

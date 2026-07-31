@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:plack-middleware-removeredundantbody"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:plack-middleware-removeredundantbody"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:plack-middleware-removeredundantbody"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libplack-middleware-removeredundantbody-perl"
+    rhel: "perl-Plack-Middleware-RemoveRedundantBody"
+    alpine: "perl-plack-middleware-removeredundantbody"

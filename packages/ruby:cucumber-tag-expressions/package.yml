@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "ruby:cucumber-tag-expressions"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for ruby:cucumber-tag-expressions"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/ruby:cucumber-tag-expressions"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "ruby-cucumber-tag-expressions"
+    rhel: "rubygem-cucumber-tag-expressions"
+    alpine: ""

@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "go:github-ryanuber-go-glob"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for go:github-ryanuber-go-glob"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/go:github-ryanuber-go-glob"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "golang-github-ryanuber-go-glob"
+    rhel: "golang-github-ryanuber-go-glob"
+    alpine: ""

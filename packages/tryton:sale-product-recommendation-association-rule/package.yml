@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "tryton:sale-product-recommendation-association-rule"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for tryton:sale-product-recommendation-association-rule"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/tryton:sale-product-recommendation-association-rule"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "tryton-modules-sale-product-recommendation-association-rule"
+    rhel: ""
+    alpine: ""

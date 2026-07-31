@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "xdrv:tdfx"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for xdrv:tdfx"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/xdrv:tdfx"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "xserver-xorg-video-tdfx"
+    rhel: "xorg-x11-drv-tdfx"
+    alpine: "xf86-video-tdfx-doc"

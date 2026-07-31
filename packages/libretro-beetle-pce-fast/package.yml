@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "libretro-beetle-pce-fast"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for libretro-beetle-pce-fast"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/libretro-beetle-pce-fast"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libretro-beetle-pce-fast"
+    rhel: "libretro-beetle-pce-fast"
+    alpine: "libretro-beetle-pce-fast"

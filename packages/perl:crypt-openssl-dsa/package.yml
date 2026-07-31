@@ -1,0 +1,31 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "perl:crypt-openssl-dsa"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for perl:crypt-openssl-dsa"
+  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  homepage: "https://repology.org/project/perl:crypt-openssl-dsa"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+  - os: "darwin"
+    arch: ["amd64", "arm64"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libcrypt-openssl-dsa-perl"
+    rhel: "perl-Crypt-OpenSSL-DSA"
+    alpine: "perl-crypt-openssl-dsa"
