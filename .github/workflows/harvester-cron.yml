@@ -1,0 +1,96 @@
+name: Harvester Cron
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Run daily at 02:00 UTC
+  workflow_dispatch:      # Allow manual triggering
+
+jobs:
+  harvest-and-pr:
+    name: Harvest & Create PR
+    runs-on: ubuntu-latest
+    outputs:
+      pr_number: ${{ steps.cpr.outputs.pull-request-number }}
+      branch_name: ${{ steps.cpr.outputs.pull-request-branch-name }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Run Harvester
+        working-directory: scripts/harvester
+        run: |
+          go mod tidy
+          go run .
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore(harvester): auto-update core packages from Repology'
+          title: 'chore(harvester): Auto-update UniStack Core Packages'
+          body: |
+            Automated PR to update UniStack core packages mapped from the latest Repology daily database dump.
+            
+            **Harvester Action**: 
+            - Extracted `packages` table from Repology.
+            - Mapped matching projects across Debian, RHEL, and Alpine.
+            - AST-merged output into `packages/*/package.yml`.
+          branch: harvester-auto-update
+          delete-branch: true
+          base: main
+
+  validate-pr:
+    name: Validate Packages (CI)
+    needs: harvest-and-pr
+    if: ${{ needs.harvest-and-pr.outputs.pr_number }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.harvest-and-pr.outputs.branch_name }}
+
+      - name: Install UniStack CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/snowdreamtech/unistack/main/install.sh | bash
+          echo "$HOME/.unistack/bin" >> $GITHUB_PATH
+
+      - name: Validate Changed Packages
+        run: |
+          # Fetch changed files
+          git fetch origin main
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep '^packages/.*package.yml$' || true)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No package.yml files changed."
+            exit 0
+          fi
+          
+          echo "Validating changed packages:"
+          echo "$CHANGED_FILES"
+          
+          for file in $CHANGED_FILES; do
+            pkg_dir=$(dirname "$file")
+            echo "Validating: $pkg_dir"
+            # Mock sandbox validation using unistack (simulating install validation)
+            # In actual implementation, we might tar it or unistack supports local parsing natively
+            tar -czvf /tmp/pkg.tar.gz -C "$pkg_dir" package.yml
+            unistack install /tmp/pkg.tar.gz --dry-run
+          done
+
+  auto-merge:
+    name: Auto Merge
+    needs: [harvest-and-pr, validate-pr]
+    if: ${{ needs.harvest-and-pr.outputs.pr_number }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable Auto-Merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ needs.harvest-and-pr.outputs.pr_number }} --auto --squash --repo ${{ github.repository }}
