@@ -71,7 +71,6 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 	buf := make([]byte, maxCapacity)
 	scanner.Buffer(buf, maxCapacity)
 
-func parseRepologySQLStream(decoder io.Reader) (map[string]*PackageMapping, error) {
 	mappings := make(map[string]*PackageMapping)
 	inPackagesTable := false
 
@@ -79,11 +78,6 @@ func parseRepologySQLStream(decoder io.Reader) (map[string]*PackageMapping, erro
 
 	// Dynamic column indices for packages table
 	var repoIdx, projectIdx, visiblenameIdx = -1, -1, -1
-	
-	scanner := bufio.NewScanner(decoder)
-	// Increase scanner buffer size to handle potentially very long lines (e.g. 10MB)
-	buf := make([]byte, 0, 10*1024*1024)
-	scanner.Buffer(buf, 10*1024*1024)
 
 	var linesProcessed int64
 	for scanner.Scan() {
