@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "python:a2wsgi"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for python:a2wsgi"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/python:a2wsgi"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "python-a2wsgi"
-    rhel: "python-a2wsgi"
-    alpine: "py3-a2wsgi"
+  debian: "python-a2wsgi"
+  rhel: "python-a2wsgi"
+  alpine: "py3-a2wsgi"

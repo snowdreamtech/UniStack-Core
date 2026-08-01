@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "qmlkonsole"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for qmlkonsole"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/qmlkonsole"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "qmlkonsole"
-    rhel: "qmlkonsole"
-    alpine: "qmlkonsole-lang"
+  debian: "qmlkonsole"
+  rhel: "qmlkonsole"
+  alpine: "qmlkonsole-lang"

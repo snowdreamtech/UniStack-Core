@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "go:github-gohugoio-hashstructure"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for go:github-gohugoio-hashstructure"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/go:github-gohugoio-hashstructure"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "golang-github-gohugoio-hashstructure"
-    rhel: "golang-github-gohugoio-hashstructure"
-    alpine: ""
+  debian: "golang-github-gohugoio-hashstructure"
+  rhel: "golang-github-gohugoio-hashstructure"
+  alpine: ""

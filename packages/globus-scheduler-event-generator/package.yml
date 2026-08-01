@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "globus-scheduler-event-generator"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for globus-scheduler-event-generator"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/globus-scheduler-event-generator"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "globus-scheduler-event-generator"
-    rhel: "globus-scheduler-event-generator"
-    alpine: ""
+  debian: "globus-scheduler-event-generator"
+  rhel: "globus-scheduler-event-generator"
+  alpine: ""

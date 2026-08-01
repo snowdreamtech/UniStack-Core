@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "python:django-timezone-field"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for python:django-timezone-field"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/python:django-timezone-field"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "python-django-timezone-field"
-    rhel: "python-django-timezone-field"
-    alpine: "py3-django-timezone-field"
+  debian: "python-django-timezone-field"
+  rhel: "python-django-timezone-field"
+  alpine: "py3-django-timezone-field"

@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "plymouth-theme-hot-dog"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for plymouth-theme-hot-dog"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/plymouth-theme-hot-dog"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "plymouth-theme-hot-dog"
-    rhel: "plymouth-theme-hot-dog"
-    alpine: ""
+  debian: "plymouth-theme-hot-dog"
+  rhel: "plymouth-theme-hot-dog"
+  alpine: ""

@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:file-find-object"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:file-find-object"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:file-find-object"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libfile-find-object-perl"
-    rhel: "perl-File-Find-Object"
-    alpine: "perl-file-find-object"
+  debian: "libfile-find-object-perl"
+  rhel: "perl-File-Find-Object"
+  alpine: "perl-file-find-object"

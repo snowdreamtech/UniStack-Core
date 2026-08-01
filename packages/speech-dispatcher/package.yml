@@ -1,35 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "speech-dispatcher"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for speech-dispatcher"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/speech-dispatcher"
   license: "Unknown"
-  tags: ["core", "auto-generated", "service"]
-
+  tags: ["core", "auto-generated"]
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "speech-dispatcher"
-    rhel: "speech-dispatcher"
-    alpine: "speech-dispatcher"
-  services:
-    debian: "speech-dispatcherd"
-    rhel: ""
-    alpine: ""
+  debian: "speech-dispatcher-contrib"
+  rhel: "speech-dispatcher"
+  alpine: "speech-dispatcher"

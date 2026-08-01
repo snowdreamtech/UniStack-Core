@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "php:staabm-side-effects-detector"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for php:staabm-side-effects-detector"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/php:staabm-side-effects-detector"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "php-staabm-side-effects-detector"
-    rhel: "php-staabm-side-effects-detector"
-    alpine: ""
+  debian: "php-staabm-side-effects-detector"
+  rhel: "php-staabm-side-effects-detector"
+  alpine: ""

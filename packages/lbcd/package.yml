@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "lbcd"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for lbcd"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/lbcd"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "lbcd"
-    rhel: ""
-    alpine: ""
+  debian: "lbcd"
+  rhel: ""
+  alpine: ""
   services:
-    debian: "lbcd"
-    rhel: ""
-    alpine: ""
+  debian: "lbcd"
+  rhel: ""
+  alpine: ""

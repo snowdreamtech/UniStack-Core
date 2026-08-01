@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "python:flake8-polyfill"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for python:flake8-polyfill"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/python:flake8-polyfill"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "flake8-polyfill"
-    rhel: "python-flake8-polyfill"
-    alpine: "py3-flake8-polyfill"
+  debian: "flake8-polyfill"
+  rhel: "python-flake8-polyfill"
+  alpine: "py3-flake8-polyfill"

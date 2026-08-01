@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "eclipselink-jpa-2.1-spec"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for eclipselink-jpa-2.1-spec"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/eclipselink-jpa-2.1-spec"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "eclipselink-jpa-2.1-spec"
-    rhel: ""
-    alpine: ""
+  debian: "eclipselink-jpa-2.1-spec"
+  rhel: ""
+  alpine: ""

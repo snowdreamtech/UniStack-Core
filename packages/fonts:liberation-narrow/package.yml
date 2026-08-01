@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "fonts:liberation-narrow"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for fonts:liberation-narrow"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/fonts:liberation-narrow"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "fonts-liberation-sans-narrow"
-    rhel: "liberation-narrow-fonts"
-    alpine: "font-liberation-sans-narrow"
+  debian: "fonts-liberation-sans-narrow"
+  rhel: "liberation-narrow-fonts"
+  alpine: "font-liberation-sans-narrow"

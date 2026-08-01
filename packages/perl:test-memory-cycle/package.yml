@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:test-memory-cycle"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:test-memory-cycle"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:test-memory-cycle"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libtest-memory-cycle-perl"
-    rhel: "perl-Test-Memory-Cycle"
-    alpine: "perl-test-memory-cycle-doc"
+  debian: "libtest-memory-cycle-perl"
+  rhel: "perl-Test-Memory-Cycle"
+  alpine: "perl-test-memory-cycle-doc"
