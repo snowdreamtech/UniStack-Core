@@ -13,7 +13,7 @@ Core packages act as the foundation of the ecosystem, and all changes require st
 
 ### Namespace Rules
 - Core packages **MUST NOT** use any namespace prefix. All core packages reside in the global root namespace (e.g., just `nginx`).
-- Your package files should be placed under the directory structure: `packages/[first_letter_of_package]/[package_name]/` (e.g., `packages/n/nginx/`).
+- Your package files should be placed directly under the `packages/` directory: `packages/[package_name]/` (e.g., `packages/nginx/`). Note that the generated registry packages are automatically categorized by the first letter of the package name during the build process.
 
 ### Submission Process
 1. Fork this repository.

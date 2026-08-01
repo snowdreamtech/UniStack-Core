@@ -49,4 +49,4 @@ jobs:
           EOF
           
           # 3. Use native rsync for incremental push (flag -c enables checksum comparison)
-          rsync -rlgoDzvc -e "ssh -o StrictHostKeyChecking=no" dist/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET_PATH}
+          rsync -rlgoDzvc --delete -e "ssh -o StrictHostKeyChecking=no" dist/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET_PATH}
