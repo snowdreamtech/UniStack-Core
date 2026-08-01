@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "gnusim8085"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for gnusim8085"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/gnusim8085"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "gnusim8085"
-    rhel: "gnusim8085"
-    alpine: ""
+  debian: "gnusim8085"
+  rhel: "gnusim8085"
+  alpine: ""

@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "setserial"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for setserial"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/setserial"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "setserial"
-    rhel: "setserial"
-    alpine: "setserial"
+  debian: "setserial"
+  rhel: "setserial"
+  alpine: "setserial"
   services:
-    debian: "etc-setserial"
-    rhel: ""
-    alpine: ""
+  debian: "etc-setserial"
+  rhel: ""
+  alpine: ""

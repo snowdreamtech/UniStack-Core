@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "ruby:kakasi-ffi"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for ruby:kakasi-ffi"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/ruby:kakasi-ffi"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "ruby-kakasi-ffi"
-    rhel: ""
-    alpine: ""
+  debian: "ruby-kakasi-ffi"
+  rhel: ""
+  alpine: ""

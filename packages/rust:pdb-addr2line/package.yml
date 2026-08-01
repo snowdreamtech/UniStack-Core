@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "rust:pdb-addr2line"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for rust:pdb-addr2line"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/rust:pdb-addr2line"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "rust-pdb-addr2line"
-    rhel: ""
-    alpine: ""
+  debian: "rust-pdb-addr2line"
+  rhel: ""
+  alpine: ""

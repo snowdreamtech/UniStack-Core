@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "kwidgetsaddons"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for kwidgetsaddons"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/kwidgetsaddons"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "kwidgetsaddons"
-    rhel: "kf5-kwidgetsaddons"
-    alpine: "kwidgetsaddons-doc"
+  debian: "kwidgetsaddons"
+  rhel: "kf5-kwidgetsaddons"
+  alpine: "kwidgetsaddons-doc"

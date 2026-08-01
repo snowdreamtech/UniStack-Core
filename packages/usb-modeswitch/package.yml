@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "usb-modeswitch"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for usb-modeswitch"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/usb-modeswitch"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "usb-modeswitch"
-    rhel: "usb_modeswitch"
-    alpine: "usb-modeswitch-doc"
+  debian: "usb-modeswitch"
+  rhel: "usb_modeswitch"
+  alpine: "usb-modeswitch-doc"
   services:
-    debian: "usb_modeswitch@"
-    rhel: ""
-    alpine: ""
+  debian: "usb_modeswitch@"
+  rhel: ""
+  alpine: ""

@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "entropybroker"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for entropybroker"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/entropybroker"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "entropybroker"
-    rhel: ""
-    alpine: ""
+  debian: "entropybroker"
+  rhel: ""
+  alpine: ""
   services:
-    debian: "eb_client_egd"
-    rhel: ""
-    alpine: ""
+  debian: "eb_client_egd"
+  rhel: ""
+  alpine: ""

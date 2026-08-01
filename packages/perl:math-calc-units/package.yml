@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:math-calc-units"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:math-calc-units"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:math-calc-units"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libmath-calc-units-perl"
-    rhel: "perl-Math-Calc-Units"
-    alpine: ""
+  debian: "libmath-calc-units-perl"
+  rhel: "perl-Math-Calc-Units"
+  alpine: ""

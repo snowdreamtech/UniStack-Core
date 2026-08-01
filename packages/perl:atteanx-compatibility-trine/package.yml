@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:atteanx-compatibility-trine"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:atteanx-compatibility-trine"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:atteanx-compatibility-trine"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libatteanx-compatibility-trine-perl"
-    rhel: "perl-AtteanX-Compatibility-Trine"
-    alpine: ""
+  debian: "libatteanx-compatibility-trine-perl"
+  rhel: "perl-AtteanX-Compatibility-Trine"
+  alpine: ""

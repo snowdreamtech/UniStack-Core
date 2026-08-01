@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "python:argon2-cffi"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for python:argon2-cffi"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/python:argon2-cffi"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: ""
-    rhel: "python-argon2-cffi"
-    alpine: "py3-argon2-cffi"
+  debian: ""
+  rhel: "python-argon2-cffi"
+  alpine: "py3-argon2-cffi"

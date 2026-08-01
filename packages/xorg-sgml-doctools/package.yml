@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "xorg-sgml-doctools"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for xorg-sgml-doctools"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/xorg-sgml-doctools"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "xorg-sgml-doctools"
-    rhel: "xorg-sgml-doctools"
-    alpine: ""
+  debian: "xorg-sgml-doctools"
+  rhel: "xorg-sgml-doctools"
+  alpine: ""

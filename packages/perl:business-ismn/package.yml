@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:business-ismn"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:business-ismn"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:business-ismn"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libbusiness-ismn-perl"
-    rhel: "perl-Business-ISMN"
-    alpine: "perl-business-ismn-doc"
+  debian: "libbusiness-ismn-perl"
+  rhel: "perl-Business-ISMN"
+  alpine: "perl-business-ismn"

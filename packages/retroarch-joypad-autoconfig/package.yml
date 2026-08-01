@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "retroarch-joypad-autoconfig"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for retroarch-joypad-autoconfig"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/retroarch-joypad-autoconfig"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: ""
-    rhel: ""
-    alpine: "retroarch-joypad-autoconfig-doc"
+  debian: ""
+  rhel: ""
+  alpine: "retroarch-joypad-autoconfig-doc"

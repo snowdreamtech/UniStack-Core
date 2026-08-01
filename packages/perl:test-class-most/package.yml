@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:test-class-most"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:test-class-most"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:test-class-most"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libtest-class-most-perl"
-    rhel: "perl-Test-Class-Most"
-    alpine: "perl-test-class-most"
+  debian: "libtest-class-most-perl"
+  rhel: "perl-Test-Class-Most"
+  alpine: "perl-test-class-most"

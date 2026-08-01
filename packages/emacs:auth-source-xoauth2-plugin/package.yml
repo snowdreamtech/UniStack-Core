@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "emacs:auth-source-xoauth2-plugin"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for emacs:auth-source-xoauth2-plugin"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/emacs:auth-source-xoauth2-plugin"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "emacs-auth-source-xoauth2-plugin"
-    rhel: ""
-    alpine: ""
+  debian: "emacs-auth-source-xoauth2-plugin"
+  rhel: ""
+  alpine: ""

@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "voms-mysql-plugin"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for voms-mysql-plugin"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/voms-mysql-plugin"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "voms-mysql-plugin"
-    rhel: "voms-mysql-plugin"
-    alpine: ""
+  debian: "voms-mysql-plugin"
+  rhel: "voms-mysql-plugin"
+  alpine: ""

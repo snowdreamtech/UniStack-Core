@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:moosex-types-common"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:moosex-types-common"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:moosex-types-common"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libmoosex-types-common-perl"
-    rhel: "perl-MooseX-Types-Common"
-    alpine: "perl-moosex-types-common"
+  debian: "libmoosex-types-common-perl"
+  rhel: "perl-MooseX-Types-Common"
+  alpine: "perl-moosex-types-common"

@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "go:github-makeworld-the-better-one-go-isemoji"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for go:github-makeworld-the-better-one-go-isemoji"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/go:github-makeworld-the-better-one-go-isemoji"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "golang-github-makeworld-the-better-one-go-isemoji"
-    rhel: ""
-    alpine: ""
+  debian: "golang-github-makeworld-the-better-one-go-isemoji"
+  rhel: ""
+  alpine: ""

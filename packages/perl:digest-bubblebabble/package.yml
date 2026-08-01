@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "perl:digest-bubblebabble"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for perl:digest-bubblebabble"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/perl:digest-bubblebabble"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "libdigest-bubblebabble-perl"
-    rhel: "perl-Digest-BubbleBabble"
-    alpine: "perl-digest-bubblebabble"
+  debian: "libdigest-bubblebabble-perl"
+  rhel: "perl-Digest-BubbleBabble"
+  alpine: "perl-digest-bubblebabble"

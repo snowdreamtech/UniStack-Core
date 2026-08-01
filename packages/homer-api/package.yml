@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "homer-api"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for homer-api"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/homer-api"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "homer-api"
-    rhel: ""
-    alpine: ""
+  debian: "homer-api"
+  rhel: ""
+  alpine: ""
   services:
-    debian: "kamailio-homer"
-    rhel: ""
-    alpine: ""
+  debian: "kamailio-homer"
+  rhel: ""
+  alpine: ""

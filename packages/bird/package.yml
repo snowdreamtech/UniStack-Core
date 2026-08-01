@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "bird"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for bird"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/bird"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "bird2"
-    rhel: "bird2"
-    alpine: "bird-dbg"
+  debian: "bird2"
+  rhel: "bird2"
+  alpine: "bird-dbg"
   services:
-    debian: "bird"
-    rhel: ""
-    alpine: ""
+  debian: "bird"
+  rhel: ""
+  alpine: ""

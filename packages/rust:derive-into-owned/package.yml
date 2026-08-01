@@ -1,31 +1,25 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "rust:derive-into-owned"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for rust:derive-into-owned"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/rust:derive-into-owned"
   license: "Unknown"
   tags: ["core", "auto-generated"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "rust-derive-into-owned"
-    rhel: "rust-derive-into-owned"
-    alpine: ""
+  debian: "rust-derive-into-owned"
+  rhel: "rust-derive-into-owned"
+  alpine: ""

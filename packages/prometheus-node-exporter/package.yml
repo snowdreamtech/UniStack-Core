@@ -1,35 +1,29 @@
----
 apiVersion: "v1alpha1"
 kind: "package"
-
 metadata:
   name: "prometheus-node-exporter"
   version: "0.0.0"
   description: "Auto-generated UniStack core package for prometheus-node-exporter"
-  authors: ["UniStack Harvester <harvester@unistack.org>"]
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
   homepage: "https://repology.org/project/prometheus-node-exporter"
   license: "Unknown"
   tags: ["core", "auto-generated", "service"]
-
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+  arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-    arch: ["amd64", "arm64"]
-
+  arch: ["amd64", "arm64"]
 delivery:
   type: "app"
-  
 dependencies:
   required: {}
   recommended: {}
-
 spec:
   packages:
-    debian: "prometheus-node-exporter"
-    rhel: "node-exporter"
-    alpine: "prometheus-node-exporter"
+  debian: "prometheus-node-exporter"
+  rhel: "node-exporter"
+  alpine: "prometheus-node-exporter"
   services:
-    debian: "prometheus-node-exporter"
-    rhel: ""
-    alpine: ""
+  debian: "prometheus-node-exporter"
+  rhel: ""
+  alpine: ""
