@@ -58,10 +58,25 @@ func GeneratePackages(dictPath string, packagesDir string, templatesDir string) 
 
 		targetFile := filepath.Join(targetDir, "package.yml")
 
+		// Retrieve existing version to prevent overwriting with 0.0.0
+		existingVersion := "0.0.0"
+		if existingData, err := os.ReadFile(targetFile); err == nil {
+			var existing struct {
+				Metadata struct {
+					Version string `yaml:"version"`
+				} `yaml:"metadata"`
+			}
+			if err := yaml.Unmarshal(existingData, &existing); err == nil {
+				if existing.Metadata.Version != "" && existing.Metadata.Version != "0.0.0" {
+					existingVersion = existing.Metadata.Version
+				}
+			}
+		}
+
 		// Prepare template data
 		tmplData := map[string]interface{}{
 			"Name":          proj,
-			"Version":       "0.0.0", // To be updated by real versions if needed
+			"Version":       existingVersion, // Preserves manual versions or defaults to 0.0.0
 			"DebianPkg":     projData.Packages.Debian,
 			"RhelPkg":       projData.Packages.Rhel,
 			"AlpinePkg":     projData.Packages.Alpine,
