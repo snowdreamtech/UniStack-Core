@@ -101,8 +101,8 @@ func GeneratePackages(dictPath string, packagesDir string, templatesDir string) 
 		if _, err := os.Stat(targetFile); err == nil {
 			mergedContent, err := mergeYAML(targetFile, buf.Bytes())
 			if err != nil {
-				log.Printf("Warning: failed to merge YAML for %s: %v", proj, err)
-				continue
+				log.Printf("Warning: failed to merge YAML for %s: %v, overwriting with clean template", proj, err)
+				mergedContent = buf.Bytes()
 			}
 			if err := os.WriteFile(targetFile, mergedContent, 0644); err != nil {
 				log.Printf("Warning: failed to write merged file %s: %v", targetFile, err)
@@ -148,9 +148,8 @@ func mergeYAML(existingFile string, newContent []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	// Clean up formatting issues that sometimes happen with yaml.v3
-	outStr := strings.ReplaceAll(out.String(), "    ", "  ")
-	return []byte(outStr), nil
+	// yaml.v3 output is structurally correct, do not use naive string replacement for spaces
+	return out.Bytes(), nil
 }
 
 // mergeNodes performs a deep merge of yaml AST nodes.
