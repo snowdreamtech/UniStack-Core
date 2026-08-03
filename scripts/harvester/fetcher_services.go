@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"compress/gzip"
 	"context"
 	"fmt"
@@ -80,9 +81,14 @@ func fetchDebianContents(ctx context.Context, url string, debianPkgToProject map
 
 	scanner := bufio.NewScanner(gzReader)
 	for scanner.Scan() {
-		line := scanner.Text()
+		lineBytes := scanner.Bytes()
 		
-		// We are looking for lines ending with .service 
+		// Quick heuristic filter: skip allocations for the 99.9% of lines that are not systemd services
+		if !bytes.Contains(lineBytes, []byte(".service")) {
+			continue
+		}
+
+		line := string(lineBytes)
 		// Format: lib/systemd/system/nginx.service    web/nginx
 		parts := strings.Fields(line)
 		if len(parts) < 2 {

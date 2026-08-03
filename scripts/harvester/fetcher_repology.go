@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -90,9 +91,11 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			log.Printf("Processed %d lines...", linesProcessed)
 		}
 		
-		line := scanner.Text()
+		lineBytes := scanner.Bytes()
+		var line string
 
 		if inPackagesTable {
+			line = string(lineBytes)
 			if line == "\\." {
 				inPackagesTable = false
 				log.Printf("Finished reading packages table (total projects mapped: %d).\n", len(mappings))
@@ -142,16 +145,19 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 				}
 			}
 		} else {
-			// Check if we reached the packages COPY statement
-			if strings.HasPrefix(line, "COPY packages ") || 
-		   strings.HasPrefix(line, "COPY public.packages ") || 
-		   strings.HasPrefix(line, "COPY repology.packages ") || 
-		   strings.HasPrefix(line, "COPY \"packages\" ") || 
-		   strings.HasPrefix(line, "COPY public.\"packages\" ") || 
-		   strings.HasPrefix(line, "COPY repology.\"packages\" ") ||
-		   strings.HasPrefix(line, "COPY packages(") ||
-		   strings.HasPrefix(line, "COPY public.packages(") ||
-		   strings.HasPrefix(line, "COPY repology.packages(") {
+			// Quick byte check before string allocation
+			if bytes.HasPrefix(lineBytes, []byte("COPY ")) {
+				line = string(lineBytes)
+				// Check if we reached the packages COPY statement
+				if strings.HasPrefix(line, "COPY packages ") || 
+			   strings.HasPrefix(line, "COPY public.packages ") || 
+			   strings.HasPrefix(line, "COPY repology.packages ") || 
+			   strings.HasPrefix(line, "COPY \"packages\" ") || 
+			   strings.HasPrefix(line, "COPY public.\"packages\" ") || 
+			   strings.HasPrefix(line, "COPY repology.\"packages\" ") ||
+			   strings.HasPrefix(line, "COPY packages(") ||
+			   strings.HasPrefix(line, "COPY public.packages(") ||
+			   strings.HasPrefix(line, "COPY repology.packages(") {
 			inPackagesTable = true
 			
 			// Parse the column names from the COPY header to adapt to schema changes
@@ -176,6 +182,7 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			if visiblenameIdx == -1 { visiblenameIdx = 9 }
 			
 			log.Printf("Found packages table. Extraction initialized with cols: repo=%d, project=%d, visiblename=%d\n", repoIdx, projectIdx, visiblenameIdx)
+		}
 		}
 		}
 	}
