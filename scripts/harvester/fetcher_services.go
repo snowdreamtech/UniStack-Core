@@ -30,9 +30,17 @@ func FetchServicesData(ctx context.Context, pkgMappings map[string]*PackageMappi
 		services[proj] = &ServiceMapping{Project: proj}
 	}
 
+	// Build reverse index: debianPkgName -> projectName for O(1) lookup
+	debianPkgToProject := make(map[string]string, len(pkgMappings))
+	for proj, mapping := range pkgMappings {
+		if mapping.DebianPkg != "" {
+			debianPkgToProject[mapping.DebianPkg] = proj
+		}
+	}
+
 	// 1. Debian/Ubuntu Services (parsing Contents-amd64.gz)
 	// Example URL: http://ftp.debian.org/debian/dists/bookworm/main/Contents-amd64.gz
-	err := fetchDebianContents(ctx, "http://ftp.debian.org/debian/dists/bookworm/main/Contents-amd64.gz", pkgMappings, services)
+	err := fetchDebianContents(ctx, "http://ftp.debian.org/debian/dists/bookworm/main/Contents-amd64.gz", debianPkgToProject, services)
 	if err != nil {
 		log.Printf("Warning: Failed to fetch Debian services: %v", err)
 	}
@@ -43,7 +51,7 @@ func FetchServicesData(ctx context.Context, pkgMappings map[string]*PackageMappi
 	return services, nil
 }
 
-func fetchDebianContents(ctx context.Context, url string, pkgMappings map[string]*PackageMapping, services map[string]*ServiceMapping) error {
+func fetchDebianContents(ctx context.Context, url string, debianPkgToProject map[string]string, services map[string]*ServiceMapping) error {
 	log.Printf("Downloading Debian Contents index: %s", url)
 	
 	req, _ := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -77,30 +85,31 @@ func fetchDebianContents(ctx context.Context, url string, pkgMappings map[string
 		
 		// We are looking for lines ending with .service 
 		// Format: lib/systemd/system/nginx.service    web/nginx
-		if strings.Contains(line, ".service") {
-			parts := strings.Fields(line)
-			if len(parts) >= 2 {
-				filepath := parts[0]
-				pkgStr := parts[1] // could be multiple comma-separated packages
+		parts := strings.Fields(line)
+		if len(parts) < 2 {
+			continue
+		}
 
-				if strings.HasSuffix(filepath, ".service") && (strings.HasPrefix(filepath, "lib/systemd/system/") || strings.HasPrefix(filepath, "usr/lib/systemd/system/")) {
-					serviceName := filepath[strings.LastIndex(filepath, "/")+1 : len(filepath)-8]
-					
-					pkgs := strings.Split(pkgStr, ",")
-					for _, pkgPath := range pkgs {
-						// Extract actual package name (e.g., web/nginx -> nginx)
-						pkgParts := strings.Split(pkgPath, "/")
-						pkgName := pkgParts[len(pkgParts)-1]
+		filePath := parts[0]
+		if !strings.HasSuffix(filePath, ".service") {
+			continue
+		}
+		if !strings.HasPrefix(filePath, "lib/systemd/system/") && !strings.HasPrefix(filePath, "usr/lib/systemd/system/") {
+			continue
+		}
 
-						// Find which project this Debian package belongs to
-						for proj, mapping := range pkgMappings {
-							if mapping.DebianPkg == pkgName {
-								if services[proj] != nil && services[proj].DebianService == "" {
-									services[proj].DebianService = serviceName
-								}
-							}
-						}
-					}
+		serviceName := filePath[strings.LastIndex(filePath, "/")+1 : len(filePath)-8]
+		pkgStr := parts[1]
+
+		for _, pkgPath := range strings.Split(pkgStr, ",") {
+			// Extract actual package name (e.g., web/nginx -> nginx)
+			pkgParts := strings.Split(pkgPath, "/")
+			pkgName := pkgParts[len(pkgParts)-1]
+
+			// O(1) reverse index lookup instead of O(N) full scan
+			if proj, ok := debianPkgToProject[pkgName]; ok {
+				if services[proj] != nil && services[proj].DebianService == "" {
+					services[proj].DebianService = serviceName
 				}
 			}
 		}
