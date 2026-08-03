@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "tpb"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/tpb"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "tpb"
-  rhel: ""
-  alpine: ""
+    debian: "tpb"
+    rhel: ""
+    alpine: ""

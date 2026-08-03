@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "minizip-ng"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/minizip-ng"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "minizip-ng"
-  rhel: "minizip"
-  alpine: "minizip-ng"
+    debian: "minizip-ng"
+    rhel: "minizip"
+    alpine: "minizip-ng"

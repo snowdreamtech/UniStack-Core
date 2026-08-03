@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "medusa-login-brute-forcer"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/medusa-login-brute-forcer"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "medusa"
-  rhel: "medusa"
-  alpine: ""
+    debian: "medusa"
+    rhel: "medusa"
+    alpine: ""

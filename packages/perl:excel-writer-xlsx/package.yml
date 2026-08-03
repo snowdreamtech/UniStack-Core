@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "perl:excel-writer-xlsx"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/perl:excel-writer-xlsx"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "libexcel-writer-xlsx-perl"
-  rhel: "perl-Excel-Writer-XLSX"
-  alpine: ""
+    debian: "libexcel-writer-xlsx-perl"
+    rhel: "perl-Excel-Writer-XLSX"
+    alpine: ""

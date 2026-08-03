@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "perl:test-perl-critic"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/perl:test-perl-critic"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "libtest-perl-critic-perl"
-  rhel: "perl-Test-Perl-Critic"
-  alpine: "perl-test-perl-critic"
+    debian: "libtest-perl-critic-perl"
+    rhel: "perl-Test-Perl-Critic"
+    alpine: "perl-test-perl-critic"

@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "perl:log-dispatch-config"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/perl:log-dispatch-config"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "liblog-dispatch-config-perl"
-  rhel: "perl-Log-Dispatch-Config"
-  alpine: "perl-log-dispatch-config"
+    debian: "liblog-dispatch-config-perl"
+    rhel: "perl-Log-Dispatch-Config"
+    alpine: "perl-log-dispatch-config"

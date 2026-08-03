@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "python:aiohttp-oauthlib"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/python:aiohttp-oauthlib"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "python-aiohttp-oauthlib"
-  rhel: "python-aiohttp-oauthlib"
-  alpine: "py3-aiohttp-oauthlib"
+    debian: "python-aiohttp-oauthlib"
+    rhel: "python-aiohttp-oauthlib"
+    alpine: "py3-aiohttp-oauthlib"
