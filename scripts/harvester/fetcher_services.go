@@ -46,8 +46,21 @@ func FetchServicesData(ctx context.Context, pkgMappings map[string]*PackageMappi
 		log.Printf("Warning: Failed to fetch Debian services: %v", err)
 	}
 
-	// TODO: Add RHEL (e.g. from repo filelists.xml.gz) and Alpine (APKINDEX) fetchers
-	log.Println("RHEL and Alpine service scanning is currently a placeholder for future extension.")
+	// 2. RHEL and Alpine Heuristic Mapping
+	// To avoid downloading massive file lists for RHEL and Alpine, we use a high-confidence heuristic:
+	// If a systemd service exists in Debian (e.g. 'mariadb'), RHEL almost certainly uses the exact same name.
+	// For Alpine (OpenRC), the init script usually matches the service name or package name.
+	for _, srv := range services {
+		if srv.DebianService != "" {
+			if srv.RhelService == "" {
+				srv.RhelService = srv.DebianService
+			}
+			if srv.AlpineService == "" {
+				srv.AlpineService = srv.DebianService
+			}
+		}
+	}
+	log.Println("Applied heuristic mapping for RHEL and Alpine services based on Debian data.")
 
 	return services, nil
 }
