@@ -111,10 +111,28 @@ func fetchDebianContents(ctx context.Context, url string, debianPkgToProject map
 			pkgParts := strings.Split(pkgPath, "/")
 			pkgName := pkgParts[len(pkgParts)-1]
 
-			// O(1) reverse index lookup instead of O(N) full scan
-			if proj, ok := debianPkgToProject[pkgName]; ok {
-				if services[proj] != nil && services[proj].DebianService == "" {
-					services[proj].DebianService = serviceName
+			// O(1) reverse index lookup with fallback for sub-packages
+			// Debian often splits projects: e.g. project 'mariadb' provides service via 'mariadb-server-10.5'
+			partsDash := strings.Split(pkgName, "-")
+			matched := false
+			for i := len(partsDash); i > 0; i-- {
+				subPkg := strings.Join(partsDash[:i], "-")
+				if proj, ok := debianPkgToProject[subPkg]; ok {
+					if services[proj] != nil && services[proj].DebianService == "" {
+						services[proj].DebianService = serviceName
+					}
+					matched = true
+					break
+				}
+			}
+			
+			if !matched {
+				// Fallback: check if the service name itself matches a project
+				// E.g., if package is "nginx-core" but project is "nginx" and service is "nginx"
+				if proj, ok := debianPkgToProject[serviceName]; ok {
+					if services[proj] != nil && services[proj].DebianService == "" {
+						services[proj].DebianService = serviceName
+					}
 				}
 			}
 		}
