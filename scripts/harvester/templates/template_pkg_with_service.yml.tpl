@@ -13,7 +13,9 @@ metadata:
 
 compatibility:
   - os: "linux"
-    arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]{{if .DarwinPkg}}
+  - os: "darwin"
+    arch: ["amd64", "arm64"]{{end}}
 
 delivery:
   type: "app"
@@ -26,7 +28,8 @@ spec:
   packages:
     debian: "{{.DebianPkg}}"
     rhel: "{{.RhelPkg}}"
-    alpine: "{{.AlpinePkg}}"
+    alpine: "{{.AlpinePkg}}"{{if .DarwinPkg}}
+    darwin: "{{.DarwinPkg}}"{{end}}
   services:
     debian: "{{.DebianService}}"
     rhel: "{{.RhelService}}"

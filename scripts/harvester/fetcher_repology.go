@@ -29,6 +29,7 @@ type PackageMapping struct {
 	DebianPkg string
 	RhelPkg   string
 	AlpinePkg string
+	DarwinPkg string
 }
 
 // FetchRepologyData downloads and parses the Repology ZST dump stream to extract package mappings.
@@ -127,8 +128,9 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			isDebian := strings.HasPrefix(repo, "debian_")
 			isAlpine := strings.HasPrefix(repo, "alpine_")
 			isRhel := strings.HasPrefix(repo, "epel_") || strings.HasPrefix(repo, "centos_") || strings.HasPrefix(repo, "rocky_") || strings.HasPrefix(repo, "rhel_") || strings.HasPrefix(repo, "fedora_")
+			isDarwin := strings.HasPrefix(repo, "homebrew") || strings.HasPrefix(repo, "macports")
 
-			if isDebian || isAlpine || isRhel {
+			if isDebian || isAlpine || isRhel || isDarwin {
 				if !validProjectName.MatchString(project) {
 					continue
 				}
@@ -148,6 +150,9 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 				}
 				if isRhel && mapping.RhelPkg == "" {
 					mapping.RhelPkg = visiblename
+				}
+				if isDarwin && mapping.DarwinPkg == "" {
+					mapping.DarwinPkg = visiblename
 				}
 			}
 		} else {
