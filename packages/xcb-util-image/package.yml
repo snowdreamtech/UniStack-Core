@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "xcb-util-image"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for xcb-util-image"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/xcb-util-image"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "xcb-util-image"
+    rhel: "xcb-util-image"
+    alpine: "xcb-util-image"

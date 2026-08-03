@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "p0f"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for p0f"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/p0f"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "p0f"
+    rhel: "p0f"
+    alpine: "p0f"

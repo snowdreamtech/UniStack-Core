@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "xboard"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for xboard"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/xboard"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "xboard"
+    rhel: "xboard"
+    alpine: "xboard"

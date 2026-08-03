@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "hdf5"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for hdf5"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/hdf5"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "hdf5"
+    rhel: "hdf5"
+    alpine: "hdf5-dev"

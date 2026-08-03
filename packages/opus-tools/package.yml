@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "opus-tools"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for opus-tools"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/opus-tools"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "opus-tools"
+    rhel: "opus-tools"
+    alpine: "opus-tools-doc"

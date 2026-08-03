@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "webp-pixbuf-loader"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for webp-pixbuf-loader"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/webp-pixbuf-loader"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "webp-pixbuf-loader"
+    rhel: "webp-pixbuf-loader"
+    alpine: "webp-pixbuf-loader"

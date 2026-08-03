@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "postgresql-jdbc"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for postgresql-jdbc"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/postgresql-jdbc"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libpgjava"
+    rhel: "postgresql-jdbc"
+    alpine: "java-postgresql-jdbc"

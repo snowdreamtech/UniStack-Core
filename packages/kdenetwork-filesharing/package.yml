@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "kdenetwork-filesharing"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for kdenetwork-filesharing"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/kdenetwork-filesharing"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "kdenetwork-filesharing"
+    rhel: "kdenetwork-filesharing"
+    alpine: "kdenetwork-filesharing-lang"

@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "redsocks"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for redsocks"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/redsocks"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "redsocks"
+    rhel: "redsocks"
+    alpine: "redsocks"
+  services:
+    debian: "redsocks"
+    rhel: ""
+    alpine: ""

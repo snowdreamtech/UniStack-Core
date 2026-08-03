@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "arm-trusted-firmware"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for arm-trusted-firmware"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/arm-trusted-firmware"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "arm-trusted-firmware"
+    rhel: "arm-trusted-firmware"
+    alpine: "arm-trusted-firmware"

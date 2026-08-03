@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "nebula-overlay-networking"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for nebula-overlay-networking"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/nebula-overlay-networking"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "nebula"
+    rhel: "nebula"
+    alpine: "nebula-openrc"
+  services:
+    debian: "nebula@"
+    rhel: ""
+    alpine: ""

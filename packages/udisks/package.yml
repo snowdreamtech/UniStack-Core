@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "udisks"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for udisks"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/udisks"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "udisks2"
+    rhel: "udisks2"
+    alpine: "udisks2-dev"
+  services:
+    debian: "udisks2"
+    rhel: ""
+    alpine: ""

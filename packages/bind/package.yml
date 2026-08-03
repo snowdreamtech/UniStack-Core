@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "bind"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for bind"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/bind"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "bind9"
+    rhel: "bind9-next"
+    alpine: "bind"
+  services:
+    debian: "named-resolvconf"
+    rhel: ""
+    alpine: ""

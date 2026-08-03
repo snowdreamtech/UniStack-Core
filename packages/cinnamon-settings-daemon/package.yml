@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "cinnamon-settings-daemon"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for cinnamon-settings-daemon"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/cinnamon-settings-daemon"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "cinnamon-settings-daemon"
+    rhel: "cinnamon-settings-daemon"
+    alpine: "cinnamon-settings-daemon"

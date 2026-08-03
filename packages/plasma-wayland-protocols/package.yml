@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "plasma-wayland-protocols"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for plasma-wayland-protocols"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/plasma-wayland-protocols"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "plasma-wayland-protocols"
+    rhel: "plasma-wayland-protocols"
+    alpine: "plasma-wayland-protocols"

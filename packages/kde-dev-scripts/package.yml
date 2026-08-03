@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "kde-dev-scripts"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for kde-dev-scripts"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/kde-dev-scripts"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "kde-dev-scripts"
+    rhel: "kde-dev-scripts"
+    alpine: "kde-dev-scripts-doc"

@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "quota"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for quota"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/quota"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "quota"
+    rhel: "quota"
+    alpine: "quota-tools-doc"
+  services:
+    debian: "quota"
+    rhel: ""
+    alpine: ""

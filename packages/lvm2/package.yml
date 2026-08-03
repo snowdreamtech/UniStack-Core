@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "lvm2"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for lvm2"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/lvm2"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "lvm2"
+    rhel: "lvm2"
+    alpine: "lvm2-doc"
+  services:
+    debian: "blk-availability"
+    rhel: ""
+    alpine: ""

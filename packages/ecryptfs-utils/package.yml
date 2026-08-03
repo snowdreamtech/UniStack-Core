@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "ecryptfs-utils"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for ecryptfs-utils"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/ecryptfs-utils"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "ecryptfs-utils"
+    rhel: "ecryptfs-utils"
+    alpine: "ecryptfs-utils-doc"

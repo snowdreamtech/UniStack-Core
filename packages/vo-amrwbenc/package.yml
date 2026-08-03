@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "vo-amrwbenc"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for vo-amrwbenc"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/vo-amrwbenc"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "vo-amrwbenc"
+    rhel: "vo-amrwbenc"
+    alpine: "vo-amrwbenc-dev"

@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "papirus-icon-theme"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for papirus-icon-theme"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/papirus-icon-theme"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "papirus-icon-theme"
+    rhel: "papirus-icon-theme"
+    alpine: "papirus-icon-theme"

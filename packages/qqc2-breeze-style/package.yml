@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "qqc2-breeze-style"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for qqc2-breeze-style"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/qqc2-breeze-style"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "qqc2-breeze-style"
+    rhel: "qqc2-breeze-style"
+    alpine: "qqc2-breeze-style"

@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "vpnc"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for vpnc"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/vpnc"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "vpnc"
+    rhel: "vpnc"
+    alpine: "vpnc-doc"
+  services:
+    debian: "vpnc@"
+    rhel: ""
+    alpine: ""

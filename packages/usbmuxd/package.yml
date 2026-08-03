@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "usbmuxd"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for usbmuxd"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/usbmuxd"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "usbmuxd"
+    rhel: "usbmuxd"
+    alpine: "usbmuxd"
+  services:
+    debian: "usbmuxd"
+    rhel: ""
+    alpine: ""

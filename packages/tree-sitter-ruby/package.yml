@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "tree-sitter-ruby"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for tree-sitter-ruby"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/tree-sitter-ruby"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "tree-sitter-ruby"
+    rhel: "tree-sitter-ruby"
+    alpine: "tree-sitter-ruby"

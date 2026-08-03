@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "gpsd"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for gpsd"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/gpsd"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "gpsd"
+    rhel: "gpsd"
+    alpine: "gpsd-dev"
+  services:
+    debian: "gpsd"
+    rhel: ""
+    alpine: ""

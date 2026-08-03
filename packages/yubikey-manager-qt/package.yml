@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "yubikey-manager-qt"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for yubikey-manager-qt"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/yubikey-manager-qt"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "yubikey-manager-qt"
+    rhel: "yubikey-manager-qt"
+    alpine: "yubikey-manager-qt"

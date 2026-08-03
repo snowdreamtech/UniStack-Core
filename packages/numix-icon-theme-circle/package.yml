@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "numix-icon-theme-circle"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for numix-icon-theme-circle"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/numix-icon-theme-circle"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "numix-icon-theme-circle"
+    rhel: "numix-icon-theme-circle"
+    alpine: "numix-icon-theme-circle-light"

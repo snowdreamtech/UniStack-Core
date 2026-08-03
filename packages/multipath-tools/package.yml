@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "multipath-tools"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for multipath-tools"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/multipath-tools"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "multipath-tools"
+    rhel: "device-mapper-multipath"
+    alpine: "multipath-tools"
+  services:
+    debian: "multipath-tools-boot"
+    rhel: ""
+    alpine: ""

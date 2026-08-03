@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "adjtimex"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for adjtimex"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/adjtimex"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "adjtimex"
+    rhel: "adjtimex"
+    alpine: "adjtimex"
+  services:
+    debian: "adjtimex"
+    rhel: ""
+    alpine: ""

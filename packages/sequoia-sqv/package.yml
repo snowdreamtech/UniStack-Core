@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "sequoia-sqv"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for sequoia-sqv"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/sequoia-sqv"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "rust-sequoia-sqv"
+    rhel: "rust-sequoia-sqv"
+    alpine: "sequoia-sqv"

@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "sanlock"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for sanlock"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/sanlock"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "sanlock"
+    rhel: "sanlock"
+    alpine: "py3-sanlock"
+  services:
+    debian: "sanlock"
+    rhel: ""
+    alpine: ""

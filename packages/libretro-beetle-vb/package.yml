@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "libretro-beetle-vb"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for libretro-beetle-vb"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/libretro-beetle-vb"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "libretro-beetle-vb"
+    rhel: "libretro-beetle-vb"
+    alpine: "libretro-beetle-vb"

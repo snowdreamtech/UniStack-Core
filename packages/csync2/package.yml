@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "csync2"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for csync2"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/csync2"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "csync2"
+    rhel: "csync2"
+    alpine: "csync2-openrc"
+  services:
+    debian: "csync2@"
+    rhel: ""
+    alpine: ""

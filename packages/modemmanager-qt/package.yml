@@ -1,0 +1,29 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "modemmanager-qt"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for modemmanager-qt"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/modemmanager-qt"
+  license: "Unknown"
+  tags: ["core", "auto-generated"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "modemmanager-qt"
+    rhel: "kf5-modemmanager-qt"
+    alpine: "modemmanager-qt-dev"

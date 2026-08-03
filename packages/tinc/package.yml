@@ -1,0 +1,33 @@
+---
+apiVersion: "v1alpha1"
+kind: "package"
+
+metadata:
+  name: "tinc"
+  version: "0.0.0"
+  description: "Auto-generated UniStack core package for tinc"
+  authors: ["snowdreamtech <snowdreamtech@qq.com>"]
+  homepage: "https://repology.org/project/tinc"
+  license: "Unknown"
+  tags: ["core", "auto-generated", "service"]
+
+compatibility:
+  - os: "linux"
+    arch: ["amd64", "arm64", "386", "arm"]
+
+delivery:
+  type: "app"
+  
+dependencies:
+  required: {}
+  recommended: {}
+
+spec:
+  packages:
+    debian: "tinc"
+    rhel: "tinc"
+    alpine: "tinc-doc"
+  services:
+    debian: "tinc"
+    rhel: ""
+    alpine: ""
