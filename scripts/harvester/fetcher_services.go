@@ -54,11 +54,10 @@ func FetchServicesData(ctx context.Context, pkgMappings map[string]*PackageMappi
 func fetchDebianContents(ctx context.Context, url string, debianPkgToProject map[string]string, services map[string]*ServiceMapping) error {
 	log.Printf("Downloading Debian Contents index: %s", url)
 	
-	req, _ := http.NewRequestWithContext(ctx, "GET", url, nil)
-	
 	var resp *http.Response
 	var err error
 	for attempt := 1; attempt <= MaxRetries; attempt++ {
+		req, _ := http.NewRequestWithContext(ctx, "GET", url, nil)
 		resp, err = http.DefaultClient.Do(req)
 		if err == nil && resp.StatusCode == http.StatusOK {
 			break
