@@ -17,7 +17,7 @@ compatibility:
 
 delivery:
   type: "app"
-  
+
 dependencies:
   required: {}
   recommended: {}
