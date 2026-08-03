@@ -38,15 +38,19 @@ func GeneratePackages(dictPath string, packagesDir string, templatesDir string) 
 	}
 
 	// 3. Iterate and Generate/Merge
+	generatedCount := 0
+	skippedCount := 0
 	for proj, projData := range dict.Projects {
 		// Implement directory exclusion rules (Task T014)
 		if proj == "tasks" || proj == "templates" {
+			skippedCount++
 			continue
 		}
 
 		// Strictly require the package to exist natively across ALL three target environments
 		// to guarantee cross-platform uniformity.
 		if projData.Packages.Debian == "" || projData.Packages.Alpine == "" || projData.Packages.Rhel == "" {
+			skippedCount++
 			continue
 		}
 
@@ -113,9 +117,10 @@ func GeneratePackages(dictPath string, packagesDir string, templatesDir string) 
 				log.Printf("Warning: failed to write new file %s: %v", targetFile, err)
 			}
 		}
+		generatedCount++
 	}
 
-	log.Println("Package Generation Phase completed successfully!")
+	log.Printf("Package Generation Phase completed successfully! Generated: %d, Skipped: %d", generatedCount, skippedCount)
 	return nil
 }
 

@@ -14,8 +14,6 @@ metadata:
 compatibility:
   - os: "linux"
     arch: ["amd64", "arm64", "386", "arm"]
-  - os: "darwin"
-    arch: ["amd64", "arm64"]
 
 delivery:
   type: "app"
