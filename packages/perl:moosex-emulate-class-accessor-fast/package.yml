@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "perl:moosex-emulate-class-accessor-fast"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/perl:moosex-emulate-class-accessor-fast"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "libmoosex-emulate-class-accessor-fast-perl"
-  rhel: "perl-MooseX-Emulate-Class-Accessor-Fast"
-  alpine: "perl-moosex-emulate-class-accessor-fast"
+    debian: "libmoosex-emulate-class-accessor-fast-perl"
+    rhel: "perl-MooseX-Emulate-Class-Accessor-Fast"
+    alpine: "perl-moosex-emulate-class-accessor-fast"

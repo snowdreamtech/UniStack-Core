@@ -1,5 +1,7 @@
+---
 apiVersion: "v1alpha1"
 kind: "package"
+
 metadata:
   name: "phonon-backend-gstreamer"
   version: "0.0.0"
@@ -8,18 +10,22 @@ metadata:
   homepage: "https://repology.org/project/phonon-backend-gstreamer"
   license: "Unknown"
   tags: ["core", "auto-generated"]
+
 compatibility:
   - os: "linux"
-  arch: ["amd64", "arm64", "386", "arm"]
+    arch: ["amd64", "arm64", "386", "arm"]
   - os: "darwin"
-  arch: ["amd64", "arm64"]
+    arch: ["amd64", "arm64"]
+
 delivery:
   type: "app"
+  
 dependencies:
   required: {}
   recommended: {}
+
 spec:
   packages:
-  debian: "phonon-backend-gstreamer"
-  rhel: "phonon-backend-gstreamer"
-  alpine: "phonon-backend-gstreamer-lang"
+    debian: "phonon-backend-gstreamer"
+    rhel: "phonon-backend-gstreamer"
+    alpine: "phonon-backend-gstreamer-lang"
