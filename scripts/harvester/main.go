@@ -38,8 +38,18 @@ func main() {
 		log.Fatalf("Failed to fetch repology data: %v", err)
 	}
 
+	// 1.5 Apply strict 3-way intersection filter (Debian AND RHEL AND Alpine)
+	// We do this BEFORE mapping services to drastically reduce memory and processing time.
+	filteredMappings := make(map[string]*PackageMapping)
+	for proj, pkg := range pkgMappings {
+		if pkg.DebianPkg != "" && pkg.RhelPkg != "" && pkg.AlpinePkg != "" {
+			filteredMappings[proj] = pkg
+		}
+	}
+	log.Printf("Filtered down to %d pure core packages with strict 3-way intersection.", len(filteredMappings))
+
 	// 2. Fetch OS Services mapping
-	srvMappings, err := FetchServicesData(ctx, pkgMappings)
+	srvMappings, err := FetchServicesData(ctx, filteredMappings)
 	if err != nil {
 		log.Fatalf("Failed to fetch services data: %v", err)
 	}
@@ -49,7 +59,7 @@ func main() {
 		Projects: make(map[string]ProjectData),
 	}
 
-	for proj, pkg := range pkgMappings {
+	for proj, pkg := range filteredMappings {
 		srv := srvMappings[proj]
 		
 		projData := ProjectData{
