@@ -6,6 +6,7 @@ import (
 	"compress/gzip"
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"strings"
@@ -46,23 +47,173 @@ func FetchServicesData(ctx context.Context, pkgMappings map[string]*PackageMappi
 		log.Printf("Warning: Failed to fetch Debian services: %v", err)
 	}
 
-	// 2. RHEL and Alpine Heuristic Mapping
-	// To avoid downloading massive file lists for RHEL and Alpine, we use a high-confidence heuristic:
-	// If a systemd service exists in Debian (e.g. 'mariadb'), RHEL almost certainly uses the exact same name.
-	// For Alpine (OpenRC), the init script usually matches the service name or package name.
+	// Build reverse index: rhelPkgName -> projectName
+	rhelPkgToProject := make(map[string]string, len(pkgMappings))
+	for proj, mapping := range pkgMappings {
+		if mapping.RhelPkg != "" {
+			rhelPkgToProject[mapping.RhelPkg] = proj
+		}
+	}
+
+	// 2. RHEL Services (parsing Rocky Linux 9 BaseOS and AppStream repodata)
+	rhelRepos := []string{
+		"http://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/",
+		"http://dl.rockylinux.org/pub/rocky/9/AppStream/x86_64/os/",
+	}
+	for _, repoUrl := range rhelRepos {
+		if err := fetchRhelContents(ctx, repoUrl, rhelPkgToProject, services); err != nil {
+			log.Printf("Warning: Failed to fetch RHEL services from %s: %v", repoUrl, err)
+		}
+	}
+
+	// 3. Alpine Heuristic Mapping (Fallback to Debian/RHEL for OpenRC)
+	// Alpine APKINDEX doesn't contain file lists natively. We use a high-confidence heuristic:
+	// OpenRC init scripts are usually identically named to the package name or the Systemd service.
 	for _, srv := range services {
-		if srv.DebianService != "" {
-			if srv.RhelService == "" {
-				srv.RhelService = srv.DebianService
-			}
-			if srv.AlpineService == "" {
+		if srv.AlpineService == "" {
+			if srv.DebianService != "" {
 				srv.AlpineService = srv.DebianService
+			} else if srv.RhelService != "" {
+				srv.AlpineService = srv.RhelService
 			}
 		}
 	}
-	log.Println("Applied heuristic mapping for RHEL and Alpine services based on Debian data.")
+	log.Println("Applied heuristic mapping for Alpine services.")
 
 	return services, nil
+}
+
+func fetchRhelContents(ctx context.Context, repoUrl string, rhelPkgToProject map[string]string, services map[string]*ServiceMapping) error {
+	log.Printf("Fetching RHEL repomd from %s...", repoUrl)
+	req, err := http.NewRequestWithContext(ctx, "GET", repoUrl+"repodata/repomd.xml", nil)
+	if err != nil {
+		return err
+	}
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return fmt.Errorf("bad status fetching repomd.xml: %d", resp.StatusCode)
+	}
+
+	// 1. Read repomd.xml completely into a string buffer to extract the filelists location
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+	bodyStr := string(bodyBytes)
+	
+	// Find <data type="filelists">...<location href="..."/>
+	filelistsHref := ""
+	dataParts := strings.Split(bodyStr, `<data type="filelists">`)
+	if len(dataParts) > 1 {
+		locParts := strings.Split(dataParts[1], `<location href="`)
+		if len(locParts) > 1 {
+			filelistsHref = strings.Split(locParts[1], `"`)[0]
+		}
+	}
+
+	if filelistsHref == "" {
+		return fmt.Errorf("could not find filelists location in repomd.xml")
+	}
+
+	// 2. Fetch the actual filelists.xml.gz
+	filelistsUrl := repoUrl + filelistsHref
+	log.Printf("Downloading RHEL filelists from %s...", filelistsUrl)
+	req2, err := http.NewRequestWithContext(ctx, "GET", filelistsUrl, nil)
+	if err != nil {
+		return err
+	}
+
+	resp2, err := http.DefaultClient.Do(req2)
+	if err != nil {
+		return err
+	}
+	defer resp2.Body.Close()
+
+	if resp2.StatusCode != 200 {
+		return fmt.Errorf("bad status fetching filelists.xml.gz: %d", resp2.StatusCode)
+	}
+
+	gzReader, err := gzip.NewReader(resp2.Body)
+	if err != nil {
+		return err
+	}
+	defer gzReader.Close()
+
+	// 3. Stream parse the XML to find <package name="xxx">...<file>/usr/lib/systemd/system/yyy.service</file>
+	// We use manual byte scanning similar to Debian for ultimate performance, as encoding/xml is heavy.
+	scanner := bufio.NewScanner(gzReader)
+	
+	// RHEL filelists.xml can have very long lines if not prettified, but it's typically line broken per <file>
+	buf := make([]byte, 0, 1024*1024)
+	scanner.Buffer(buf, 10*1024*1024)
+
+	var currentPkg string
+	
+	for scanner.Scan() {
+		line := scanner.Bytes()
+		
+		// If line defines a package
+		if bytes.Contains(line, []byte("<package ")) && bytes.Contains(line, []byte(`name="`)) {
+			// Extract name="..."
+			strLine := string(line)
+			idx := strings.Index(strLine, `name="`)
+			if idx != -1 {
+				endIdx := strings.Index(strLine[idx+6:], `"`)
+				if endIdx != -1 {
+					currentPkg = strLine[idx+6 : idx+6+endIdx]
+				}
+			}
+			continue
+		}
+
+		// If line defines a file
+		if bytes.Contains(line, []byte("<file>")) && bytes.Contains(line, []byte(".service</file>")) {
+			if !bytes.Contains(line, []byte("/usr/lib/systemd/system/")) && !bytes.Contains(line, []byte("/lib/systemd/system/")) {
+				continue
+			}
+			if currentPkg == "" {
+				continue
+			}
+
+			strLine := string(line)
+			start := strings.Index(strLine, "<file>") + 6
+			end := strings.Index(strLine, "</file>")
+			if start >= 6 && end > start {
+				filePath := strLine[start:end]
+				serviceName := filePath[strings.LastIndex(filePath, "/")+1 : len(filePath)-8] // remove .service
+
+				// Fuzzy matching logic identical to Debian
+				partsDash := strings.Split(currentPkg, "-")
+				matched := false
+				for i := len(partsDash); i > 0; i-- {
+					subPkg := strings.Join(partsDash[:i], "-")
+					if proj, ok := rhelPkgToProject[subPkg]; ok {
+						if services[proj] != nil && services[proj].RhelService == "" {
+							services[proj].RhelService = serviceName
+						}
+						matched = true
+						break
+					}
+				}
+				
+				if !matched {
+					if proj, ok := rhelPkgToProject[serviceName]; ok {
+						if services[proj] != nil && services[proj].RhelService == "" {
+							services[proj].RhelService = serviceName
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return scanner.Err()
 }
 
 func fetchDebianContents(ctx context.Context, url string, debianPkgToProject map[string]string, services map[string]*ServiceMapping) error {
