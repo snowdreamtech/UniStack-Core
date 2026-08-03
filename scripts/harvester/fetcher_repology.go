@@ -35,29 +35,35 @@ type PackageMapping struct {
 func FetchRepologyData(ctx context.Context) (map[string]*PackageMapping, error) {
 	log.Println("Starting Repology dump fetch with stream parsing...")
 
-	var resp *http.Response
+	var mappings map[string]*PackageMapping
 	var err error
 
-	// Exponential backoff retry mechanism
+	// Exponential backoff retry mechanism covering the ENTIRE stream process
 	for attempt := 1; attempt <= MaxRetries; attempt++ {
-		req, _ := http.NewRequestWithContext(ctx, "GET", RepologyDumpURL, nil)
-		resp, err = http.DefaultClient.Do(req)
-		
-		if err == nil && resp.StatusCode == http.StatusOK {
-			break
+		mappings, err = attemptFetchRepologyData(ctx)
+		if err == nil {
+			return mappings, nil
 		}
-		
-		if resp != nil {
-			resp.Body.Close()
-		}
-		
-		log.Printf("Attempt %d failed: %v. Retrying...", attempt, err)
+		log.Printf("Attempt %d failed during stream processing: %v", attempt, err)
 		if attempt == MaxRetries {
 			return nil, fmt.Errorf("failed to fetch repology dump after %d attempts: %w", MaxRetries, err)
 		}
 		time.Sleep(time.Duration(1<<attempt) * time.Second)
 	}
+	return nil, err
+}
+
+func attemptFetchRepologyData(ctx context.Context) (map[string]*PackageMapping, error) {
+	req, _ := http.NewRequestWithContext(ctx, "GET", RepologyDumpURL, nil)
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
+	}
 
 	// Setup Zstandard decompressor
 	decoder, err := zstd.NewReader(resp.Body)
