@@ -19,7 +19,7 @@ jobs:
       - name: Setup UniStack
         uses: snowdreamtech/setup-unistack@e1acc8a705f9de654ee3619918b561f861141371 # v1
         with:
-          unistack-version: '0.0.6'
+          unistack-version: '0.0.10'
 
       - name: Build Packages and Generate Index
         run: |
