@@ -44,8 +44,9 @@ func GeneratePackages(dictPath string, packagesDir string, templatesDir string) 
 			continue
 		}
 
-		// Filter out projects that are likely not useful (e.g. ones with no debian/rhel mapping at all)
-		if projData.Packages.Debian == "" && projData.Packages.Alpine == "" && projData.Packages.Rhel == "" {
+		// Strictly require the package to exist natively across ALL three target environments
+		// to guarantee cross-platform uniformity.
+		if projData.Packages.Debian == "" || projData.Packages.Alpine == "" || projData.Packages.Rhel == "" {
 			continue
 		}
 
