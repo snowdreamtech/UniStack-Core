@@ -7,11 +7,15 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
 	"github.com/klauspost/compress/zstd"
 )
+
+// validProjectName matches names containing only alphanumeric, hyphens, underscores, dots, and plus signs.
+var validProjectName = regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9._+\-]*$`)
 
 const (
 	RepologyDumpURL = "https://dumps.repology.org/repology-database-dump-latest.sql.zst"
@@ -116,6 +120,9 @@ func parseRepologySQLStream(reader io.Reader) (map[string]*PackageMapping, error
 			isRhel := strings.HasPrefix(repo, "epel_") || strings.HasPrefix(repo, "centos_") || strings.HasPrefix(repo, "rocky_") || strings.HasPrefix(repo, "rhel_") || strings.HasPrefix(repo, "fedora_")
 
 			if isDebian || isAlpine || isRhel {
+				if !validProjectName.MatchString(project) {
+					continue
+				}
 				mapping, exists := mappings[project]
 				if !exists {
 					mapping = &PackageMapping{
