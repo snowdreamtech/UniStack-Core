@@ -9,3 +9,7 @@
 ### Go ###
 scripts/harvester/harvester
 scripts/harvester/services_dict.yml
+
+### Packages ###
+packages/*
+!packages/registry.yml
