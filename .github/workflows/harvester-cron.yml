@@ -31,7 +31,7 @@ jobs:
           go run .
 
       - name: Setup UniStack
-        uses: snowdreamtech/setup-unistack@e1acc8a705f9de654ee3619918b561f861141371 # v1
+        uses: snowdreamtech/setup-unistack@8d4708e8c7146cef71aef69d5a2b158893bf8957 # v1
         with:
           unistack-version: '0.0.10'
 
